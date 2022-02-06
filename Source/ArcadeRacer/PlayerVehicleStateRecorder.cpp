@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "PlayerVehicleStateRecorder.h"
 
 // Sets default values for this component's properties
@@ -19,12 +16,17 @@ void UPlayerVehicleStateRecorder::BeginPlay()
 {
 	Super::BeginPlay();
 
-	APlayerController* player = GetWorld()->GetFirstPlayerController();
+	PlayerController = Cast<AMainPlayerController>(GetOwner());
+	if (!PlayerController) {
+		UE_LOG(LogTemp, Error, TEXT("AMainPlayerController not found!"))
+		return;
+	}
 
-	VehicleComponent = player->AcknowledgedPawn->FindComponentByClass<UWheeledVehicleMovementComponent>();
+	VehicleComponent = PlayerController->AcknowledgedPawn->FindComponentByClass<UWheeledVehicleMovementComponent>();
 	if (!VehicleComponent)
 	{
-		UE_LOG(LogTemp, Error, TEXT("No VehicleComponent found on Player %s"), *player->GetName())
+		UE_LOG(LogTemp, Error, TEXT("UWheeledVehicleMovementComponent not found!"))
+		return;
 	}	
 }
 
@@ -34,6 +36,6 @@ void UPlayerVehicleStateRecorder::TickComponent(float DeltaTime, ELevelTick Tick
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	//PlayerController->VehicleState->Speed = 5;
 }
 

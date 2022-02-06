@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -14,4 +12,9 @@ class ARCADERACER_API UPlayerVehicleState : public UObject
 {
 	GENERATED_BODY()
 	
+public:
+	UPlayerVehicleState();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Speed;
 };

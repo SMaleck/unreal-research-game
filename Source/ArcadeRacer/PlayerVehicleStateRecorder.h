@@ -5,8 +5,8 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "WheeledVehicleMovementComponent.h"
+#include "MainPlayerController.h"
 #include "PlayerVehicleStateRecorder.generated.h"
-
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ARCADERACER_API UPlayerVehicleStateRecorder : public UActorComponent
@@ -14,6 +14,7 @@ class ARCADERACER_API UPlayerVehicleStateRecorder : public UActorComponent
 	GENERATED_BODY()
 
 private:
+	AMainPlayerController* PlayerController = nullptr;
 	UWheeledVehicleMovementComponent* VehicleComponent = nullptr;
 
 public:	
