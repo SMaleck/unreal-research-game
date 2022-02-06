@@ -36,6 +36,6 @@ void UPlayerVehicleStateRecorder::TickComponent(float DeltaTime, ELevelTick Tick
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	//PlayerController->VehicleState->Speed = 5;
+	PlayerController->VehicleState->Speed = 5;
 }
 

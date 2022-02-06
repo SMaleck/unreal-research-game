@@ -15,7 +15,7 @@ public:
 	TSubclassOf<class UUserWidget> RaceHudAsset;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD")
-		UUserWidget* RaceHud = nullptr;
+	UUserWidget* RaceHud = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State Objects")
 	UPlayerVehicleState* VehicleState = nullptr;
