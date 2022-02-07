@@ -36,6 +36,7 @@ void UPlayerVehicleStateRecorder::TickComponent(float DeltaTime, ELevelTick Tick
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	PlayerController->VehicleState->Speed = 5;
+	UE_LOG(LogTemp, Error, TEXT("UWheeledVehicleMovementComponent not found!"))
+	PlayerController->VehicleState->Speed = 7.f;
 }
 

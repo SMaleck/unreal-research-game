@@ -11,13 +11,13 @@ class ARCADERACER_API AMainPlayerController : public APlayerController
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD")
-	TSubclassOf<class UUserWidget> RaceHudAsset;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "HUD")
+	TSubclassOf<class UUserWidget> PlayerHudAsset;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD")
-	UUserWidget* RaceHud = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "HUD")
+	UUserWidget* PlayerHud = nullptr;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State Objects")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State Objects")
 	UPlayerVehicleState* VehicleState = nullptr;
 
 protected:
