@@ -13,8 +13,6 @@ class ARCADERACER_API UPlayerVehicleState : public UObject
 	GENERATED_BODY()
 	
 public:
-	UPlayerVehicleState();
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Speed;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	float SpeedUnitsPerSecond;
 };
