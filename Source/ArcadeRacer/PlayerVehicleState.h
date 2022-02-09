@@ -4,9 +4,6 @@
 #include "UObject/NoExportTypes.h"
 #include "PlayerVehicleState.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class ARCADERACER_API UPlayerVehicleState : public UObject
 {
