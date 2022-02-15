@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "WheeledVehicleMovementComponent.h"
-#include "MainPlayerController.h"
+#include "../Player/MainPlayerController.h"
 #include "PlayerVehicleStateRecorder.generated.h"
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )

@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "PlayerVehicleState.h"
+#include "../Vehicles/PlayerVehicleState.h"
 #include "MainPlayerController.generated.h"
 
 UCLASS()

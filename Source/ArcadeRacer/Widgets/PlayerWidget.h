@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "MainPlayerController.h"
+#include "../Player/MainPlayerController.h"
 #include "PlayerWidget.generated.h"
 
 UCLASS()
