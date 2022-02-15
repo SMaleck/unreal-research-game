@@ -26,8 +26,12 @@ void ALapGate::BeginPlay()
 
 void ALapGate::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	// Check if Actor has Vehicle State
+	// Increment counter
 }
 
 void ALapGate::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+	// Check if Actor has Vehicle State
+	// Increment counter
 }

@@ -2,10 +2,10 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "PlayerVehicleState.generated.h"
+#include "VehicleState.generated.h"
 
 UCLASS()
-class ARCADERACER_API UPlayerVehicleState : public UObject
+class ARCADERACER_API UVehicleState : public UObject
 {
 	GENERATED_BODY()
 	

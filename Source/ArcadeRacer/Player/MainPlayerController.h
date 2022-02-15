@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "../Vehicles/PlayerVehicleState.h"
+#include "../Vehicles/VehicleState.h"
 #include "MainPlayerController.generated.h"
 
 UCLASS()
@@ -18,7 +18,7 @@ public:
 	UUserWidget* PlayerHud = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State Objects")
-	UPlayerVehicleState* VehicleState = nullptr;
+	UVehicleState* VehicleState = nullptr;
 
 protected:
 	virtual void BeginPlay() override;

@@ -5,7 +5,7 @@ void AMainPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	VehicleState = NewObject<UPlayerVehicleState>(this);
+	VehicleState = NewObject<UVehicleState>(this);
 
 	if (!PlayerHudAsset) {
 		UE_LOG(LogTemp, Error, TEXT("No RaceHudAsset set"))
