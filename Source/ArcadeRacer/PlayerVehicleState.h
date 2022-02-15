@@ -12,4 +12,13 @@ class ARCADERACER_API UPlayerVehicleState : public UObject
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	float SpeedUnitsPerSecond;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int GateEnterCount;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int GateExitCount;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int CompletedLaps;
 };
