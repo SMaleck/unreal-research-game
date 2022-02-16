@@ -1,15 +1,11 @@
-#include "AVehicle.h"
+#include "VehiclePawn.h"
 
 #include "WheeledVehicleMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
-AAVehicle::AAVehicle()
+AVehicle::AVehicle()
 {
-	//PrimaryActorTick.bCanEverTick = true;
-
-	//RootComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("VehicleMesh"));
-	
 	// Create a spring arm component
 	TPSpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("TPSpringArm"));
 	TPSpringArm->TargetOffset = FVector(0.f, 0.f, 200.f);
@@ -42,12 +38,12 @@ AAVehicle::AAVehicle()
 	VehicleComponent->WheelSetups[3].bDisableSteering = true;
 }
 
-void AAVehicle::BeginPlay()
+void AVehicle::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void AAVehicle::Tick(float DeltaTime)
+void AVehicle::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
