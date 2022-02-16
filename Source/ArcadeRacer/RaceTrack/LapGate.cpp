@@ -11,9 +11,20 @@ ALapGate::ALapGate()
 
 	EntryTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("EntryTrrigger"));
 	EntryTrigger->SetupAttachment(GetRootComponent());
-
+	
 	ExitTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("ExitTrigger"));
 	ExitTrigger->SetupAttachment(GetRootComponent());
+	
+	SetupTrigger(EntryTrigger);
+	SetupTrigger(ExitTrigger);
+}
+
+void ALapGate::SetupTrigger(UBoxComponent* trigger)
+{
+	trigger->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	trigger->SetCollisionObjectType(ECollisionChannel::ECC_WorldStatic);
+	trigger->SetCollisionResponseToChannels(ECollisionResponse::ECR_Ignore);
+	trigger->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 }
 
 void ALapGate::BeginPlay()

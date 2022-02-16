@@ -13,16 +13,16 @@ public:
 	ALapGate();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Visuals")
-	class UStaticMeshComponent* GateMesh;
+	class UStaticMeshComponent* GateMesh = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Triggers")
-	class UBoxComponent* EntryTrigger;
+	class UBoxComponent* EntryTrigger = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Triggers")
-	class UBoxComponent* ExitTrigger;
+	class UBoxComponent* ExitTrigger = nullptr;
 
 private:
-	void SetupTriggers();
+	void SetupTrigger(UBoxComponent* trigger);
 
 protected:
 	virtual void BeginPlay() override;
