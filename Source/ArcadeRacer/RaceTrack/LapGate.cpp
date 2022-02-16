@@ -1,5 +1,6 @@
 #include "LapGate.h"
 #include "Components/BoxComponent.h"
+#include "Pawns/VehicleStateComponent.h"
 
 // Sets default values
 ALapGate::ALapGate()
@@ -30,19 +31,31 @@ void ALapGate::SetupTrigger(UBoxComponent* trigger)
 void ALapGate::BeginPlay()
 {
 	Super::BeginPlay();	
-
+	UE_LOG(LogTemp, Warning, TEXT("Gate SETUP SUCCESS"))
 	EntryTrigger->OnComponentBeginOverlap.AddDynamic(this, &ALapGate::OnBeginOverlap);
 	EntryTrigger->OnComponentEndOverlap.AddDynamic(this, &ALapGate::OnEndOverlap);
 }
 
 void ALapGate::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	// Check if Actor has Vehicle State
-	// Increment counter
+	UE_LOG(LogTemp, Warning, TEXT("Gate ENTER"))
+	UActorComponent* component = OtherActor->GetComponentByClass(UVehicleStateComponent::StaticClass());
+	if(component)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Gate ENTER SUCCESS"))
+		UVehicleStateComponent* State = CastChecked<UVehicleStateComponent>(component);
+		State->EnterGate();
+	}
 }
 
 void ALapGate::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	// Check if Actor has Vehicle State
-	// Increment counter
+	UE_LOG(LogTemp, Warning, TEXT("Gate EXIT"))
+	UActorComponent* component = OtherActor->GetComponentByClass(UVehicleStateComponent::StaticClass());
+	if(component)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Gate EXIT SUCCESS"))
+		UVehicleStateComponent* State = CastChecked<UVehicleStateComponent>(component);
+		State->ExitGate();
+	}
 }

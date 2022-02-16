@@ -1,10 +1,11 @@
 #include "VehiclePawn.h"
 
+#include "VehicleStateComponent.h"
 #include "WheeledVehicleMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
-AVehicle::AVehicle()
+AVehiclePawn::AVehiclePawn()
 {
 	// Create a spring arm component
 	TPSpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("TPSpringArm"));
@@ -36,14 +37,18 @@ AVehicle::AVehicle()
 
 	VehicleComponent->WheelSetups[3].BoneName = FName("RL");
 	VehicleComponent->WheelSetups[3].bDisableSteering = true;
+
+	// Components
+	VehicleState = CreateDefaultSubobject<UVehicleStateComponent>("VehicleState");
+	VehicleState->SetIsReplicated(true); // Enable replication by default
 }
 
-void AVehicle::BeginPlay()
+void AVehiclePawn::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void AVehicle::Tick(float DeltaTime)
+void AVehiclePawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }

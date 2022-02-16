@@ -5,24 +5,24 @@
 
 #include "CoreMinimal.h"
 #include "WheeledVehicle.h"
-#include "Vehicle.generated.h"
+#include "VehiclePawn.generated.h"
 
 UCLASS()
-class ARCADERACER_API AVehicle : public AWheeledVehicle
+class ARCADERACER_API AVehiclePawn : public AWheeledVehicle
 {
 	GENERATED_BODY()
 
 public:
-	AVehicle();
+	AVehiclePawn();
 
 	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* TPSpringArm = nullptr;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* TPCamera = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	class UCameraComponent* TPCamera = nullptr;
+	class UVehicleStateComponent* VehicleState = nullptr;
 
 protected:
 	virtual void BeginPlay() override;

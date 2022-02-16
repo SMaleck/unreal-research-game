@@ -1,11 +1,12 @@
 #include "MainPlayerController.h"
 #include "Blueprint/UserWidget.h"
+#include "Pawns/VehicleStateComponent.h"
 
 void AMainPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	VehicleState = NewObject<UVehicleState>(this);
+	VehicleState = AcknowledgedPawn->FindComponentByClass<UVehicleStateComponent>();
 
 	if (!PlayerHudAsset) {
 		UE_LOG(LogTemp, Error, TEXT("No RaceHudAsset set"))
