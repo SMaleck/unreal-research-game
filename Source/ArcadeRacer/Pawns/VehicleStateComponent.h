@@ -43,6 +43,8 @@ public:
 	UFUNCTION()
 	void ExitGate();
 
+	void EnterCheckpoint(int32 checkpointId);
+
 private:
 	class UWheeledVehicleMovementComponent* MovementComponent = nullptr;
 };

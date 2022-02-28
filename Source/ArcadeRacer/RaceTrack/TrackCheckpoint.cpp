@@ -1,27 +1,35 @@
-
-
-
 #include "RaceTrack/TrackCheckpoint.h"
+#include "Components/BoxComponent.h"
+#include "Pawns/VehicleStateComponent.h"
 
 // Sets default values
 ATrackCheckpoint::ATrackCheckpoint()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
+	Trigger = CreateDefaultSubobject<UBoxComponent>(TEXT("Trrigger"));
+	Trigger->SetupAttachment(GetRootComponent());
+
+	Trigger->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	Trigger->SetCollisionObjectType(ECollisionChannel::ECC_WorldStatic);
+	Trigger->SetCollisionResponseToChannels(ECollisionResponse::ECR_Ignore);
+	Trigger->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 }
 
-// Called when the game starts or when spawned
 void ATrackCheckpoint::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	Trigger->OnComponentBeginOverlap.AddDynamic(this, &ATrackCheckpoint::OnGateEnter);
 }
 
-// Called every frame
-void ATrackCheckpoint::Tick(float DeltaTime)
+void ATrackCheckpoint::OnGateEnter(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	Super::Tick(DeltaTime);
-
+	UActorComponent* component = OtherActor->GetComponentByClass(UVehicleStateComponent::StaticClass());
+	if(component)
+	{
+		UVehicleStateComponent* State = CastChecked<UVehicleStateComponent>(component);
+		State->EnterCheckpoint(CheckpointId);
+	}
 }
-

@@ -51,3 +51,8 @@ void UVehicleStateComponent::ExitGate()
 	}
 }
 
+void UVehicleStateComponent::EnterCheckpoint(int32 checkpointId)
+{
+	
+}
+
