@@ -20,6 +20,9 @@ public:
 	float SpeedKmh; // Km per Hour
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	float LapTimeSeconds;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	int GateEnterCount;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)

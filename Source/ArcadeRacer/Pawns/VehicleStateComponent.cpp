@@ -1,5 +1,6 @@
 #include "VehicleStateComponent.h"
 #include "WheeledVehicleMovementComponent.h"
+#include "Math/UnrealMathUtility.h"
 
 UVehicleStateComponent::UVehicleStateComponent()
 {
@@ -13,6 +14,7 @@ void UVehicleStateComponent::BeginPlay()
 	GateEnterCount = 0;
 	GateExitCount = 0;
 	CompletedLaps = 0;
+	LapTimeSeconds = 0;
 	
 	MovementComponent = GetOwner()->FindComponentByClass<UWheeledVehicleMovementComponent>();
 }
@@ -22,6 +24,7 @@ void UVehicleStateComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	SetSpeed(MovementComponent->GetForwardSpeed());
+	LapTimeSeconds += DeltaTime;
 }
 
 void UVehicleStateComponent::SetSpeed(float unitsPerSecond)
@@ -44,6 +47,7 @@ void UVehicleStateComponent::ExitGate()
 	{
 		GateExitCount++;
 		CompletedLaps++;
+		LapTimeSeconds = 0;
 	}
 }
 
