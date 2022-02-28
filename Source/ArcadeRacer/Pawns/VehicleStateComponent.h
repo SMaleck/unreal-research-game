@@ -31,6 +31,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	int CompletedLaps;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int32 LastCheckpointId;
+
 	virtual void BeginPlay() override;
 	void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction);
 

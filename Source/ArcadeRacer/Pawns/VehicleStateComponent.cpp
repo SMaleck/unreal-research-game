@@ -43,16 +43,21 @@ void UVehicleStateComponent::EnterGate()
 
 void UVehicleStateComponent::ExitGate()
 {
+	// ToDo Verify here, that we actually passed all checkpoints
 	if(GateEnterCount > GateExitCount)
 	{
 		GateExitCount++;
 		CompletedLaps++;
 		LapTimeSeconds = 0;
+		LastCheckpointId = -1;
 	}
 }
 
 void UVehicleStateComponent::EnterCheckpoint(int32 checkpointId)
 {
-	
+	if(LastCheckpointId == checkpointId - 1)
+	{
+		LastCheckpointId = checkpointId;
+	}
 }
 
