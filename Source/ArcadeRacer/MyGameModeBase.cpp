@@ -1,5 +1,0 @@
-
-
-
-#include "MyGameModeBase.h"
-
